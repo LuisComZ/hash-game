@@ -47,6 +47,12 @@ function checkForWin (currentPlayer) {
   })
 }
 
+function checkForDraw () {
+  return [...cellElements].every(cell => {
+    return cell.classList.contains("x") || cell.classList.contains("circle")
+  })
+}
+
 function placeMark(cell, classToAdd) {
   cell.classList.add(classToAdd)
 }
@@ -74,12 +80,15 @@ function handleClick(e) {
 
   placeMark(cell, classToAdd)
 
+  const isDraw = checkForDraw()
   const isWin = checkForWin(classToAdd)
   if (isWin) {
     endGame(false)
-  }
-
-  swapTurns()
+  } else if (isDraw) {
+    endGame(true)
+  } else {
+    swapTurns()
+  } 
 }
 
 startGame()
