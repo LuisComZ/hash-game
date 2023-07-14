@@ -126,6 +126,10 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.show-winning-message {
+  display: flex;
+}
+
 button {
   padding: 8px 35px;
   border-radius: 5px;
