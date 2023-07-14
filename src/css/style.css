@@ -153,3 +153,10 @@ button:hover {
   color: rgb(65, 185,131);
   background-color: white;
 }
+
+@media screen and (max-width: 550px) {
+  .cell {
+    width: 110px;
+    height: 110px;
+  }
+}
