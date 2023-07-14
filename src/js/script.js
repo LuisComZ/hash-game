@@ -2,6 +2,7 @@ const cellElements = document.querySelectorAll(".cell")
 const board = document.querySelector(".board")
 const winning = document.querySelector(".winning")
 const winningMessage = document.querySelector(".message")
+const restartButton = document.querySelector(".restart")
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -15,12 +16,17 @@ const winningCombinations = [
 let isCircleTurn
 
 function startGame() {
+  isCircleTurn = false
+
   for (const cell of cellElements) {
+    cell.classList.remove("circle")
+    cell.classList.remove("x")
+    cell.removeEventListener("click", handleClick)
     cell.addEventListener("click", handleClick, { once: true })
   }
 
-  isCircleTurn = false
-  board.classList.add("x")
+  setBoardCoverClass()
+  winning.classList.remove("show-winning-message")
 }
 
 function endGame (isDraw) {
@@ -45,9 +51,7 @@ function placeMark(cell, classToAdd) {
   cell.classList.add(classToAdd)
 }
 
-function swapTurns () {
-  isCircleTurn = !isCircleTurn
-
+function setBoardCoverClass () {
   board.classList.remove("circle")
   board.classList.remove("x")
 
@@ -56,6 +60,12 @@ function swapTurns () {
   } else {
     board.classList.add("x")
   }
+}
+
+function swapTurns () {
+  isCircleTurn = !isCircleTurn
+
+  setBoardCoverClass()
 }
 
 function handleClick(e) {
@@ -73,3 +83,4 @@ function handleClick(e) {
 }
 
 startGame()
+restartButton.addEventListener("click", startGame)
