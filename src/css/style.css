@@ -15,7 +15,7 @@ body {
   background: linear-gradient(90deg, #ffd836 -15%, #00d4ff 70%);
 }
 
-.board { 
+.board {
   width: 100%;
   height: 100%;
 
@@ -84,7 +84,7 @@ body {
 
   position: absolute;
 
-  background-color: white; 
+  background-color: white;
 }
 
 .cell.x::before,
@@ -108,15 +108,15 @@ body {
 
   position: absolute;
 
-  background-color: white; 
+  background-color: white;
 }
 
-.winning { 
+.winning {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   position: fixed;
   top: 0;
   right: 0;
@@ -139,24 +139,48 @@ button {
   font-size: 2rem;
 
   color: white;
-  background-color: rgb(65, 185,131);
+  background-color: rgb(65, 185, 131);
 
   cursor: pointer;
 }
 
-.message {
-  font-size: 4rem; 
-  color: white;
+button:hover {
+  color: rgb(65, 185, 131);
+  background-color: white;
 }
 
-button:hover {
-  color: rgb(65, 185,131);
-  background-color: white;
+.message {
+  font-size: 4rem;
+  color: white;
 }
 
 @media screen and (max-width: 550px) {
   .cell {
     width: 110px;
     height: 110px;
+  }
+
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    width: calc(110px * 0.8);
+    height: calc(110px * 0.05);
+  }
+
+  .cell.circle::before,
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before,
+  .board.circle .cell:not(.x):not(.circle):hover::before {
+    width: 90px;
+    height: 90px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+
+  .message {
+    font-size: 2rem;
   }
 }
